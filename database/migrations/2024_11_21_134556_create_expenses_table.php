@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->foreign("company_id")->references("id")->on("companies");
             $table->unsignedBigInteger("licence_id")->nullable();
             $table->foreign("licence_id")->references("id")->on("licences");
-            $table->enum("expense_type", \App\Enums\ExpenseType::getValues())->default(\App\Enums\ExpenseType::Other);
-            $table->integer("amount")->nullable();
+            $table->enum("expense_type", \App\Enums\ExpenseTypeEnum::getValues())->default(\App\Enums\ExpenseTypeEnum::Other);
+            $table->bigInteger("amount")->nullable();
             $table->date("date")->nullable();
             $table->string("status")->nullable();
             $table->string("description")->nullable();

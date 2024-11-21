@@ -7,8 +7,12 @@
         {{html()->form()->route("admin.contract.store")->acceptsFiles()->open()}}
         <div class="modal-body">
             <div class="mb-2">
-                {{html()->label("Resim", "image")->class("form-label")->for("image")}}
-                {{html()->file("image")->class("form-control")->required()}}
+                {{html()->label("Sözleşme", "file")->class("form-label")->for("file")}}
+                {{html()->file("file")->class("form-control")->multiple()}}
+            </div>
+            <div class="mb-2">
+                {{html()->label("Sözleşme Başlığı", "title")->class("form-label")->for("title")}}
+                {{html()->text("title")->class("form-control")->placeholder("Sözleşme Başlığı")->required()}}
             </div>
             <div class="mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}
@@ -16,27 +20,21 @@
             </div>
             <div class="mb-2">
                 {{html()->label("Ruhsat (Önce Firma Seçin)", "licence")->class("form-label")->for("licence")}}
-                {{html()->select("licence_id")->class("form-control")->placeholder("Ruhsat Seçiniz")->required()}}
+                {{html()->select("licence_id")->class("form-control")->id("licence_select")->placeholder("Firma Seçiniz")}}
             </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Başlangıç Tarihi", "start_date")->class("form-label")->for("start_date")}}
-                    {{html()->date("start_date")->class("form-control")->placeholder("Başlangıç Tarihi")->required()}}
+                    {{html()->date("start_date")->class("form-control")->placeholder("Başlangıç Tarihi")}}
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Bitiş Tarihi", "end_date")->class("form-label")->for("end_date")}}
-                    {{html()->date("end_date")->class("form-control")->placeholder("Bitiş Tarihi")->required()}}
+                    {{html()->date("end_date")->class("form-control")->placeholder("Bitiş Tarihi")}}
                 </div>
             </div>
-            <div class="row mb-2">
-                <div class="col-lg-6">
-                    {{html()->label("Ruhsat Grubu", "group")->class("form-label")->for("group")}}
-                    {{html()->text("group")->class("form-control")->placeholder("Ruhsat Grubu")->required()}}
-                </div>
-                <div class="col-lg-6">
-                    {{html()->label("Ruhsat Durumu", "status")->class("form-label")->for("status")}}
-                    {{html()->text("status")->class("form-control")->placeholder("Ruhsat Durumu")->required()}}
-                </div>
+            <div class="mb-2">
+                {{html()->label("Açıklama")->class("form-label")->for("description")}}
+                {{html()->textarea("description")->class("form-control")->placeholder("Açıklama")}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>

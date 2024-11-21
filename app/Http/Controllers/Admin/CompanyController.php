@@ -48,13 +48,13 @@ class CompanyController extends Controller
         }
     }
 
-//    /**
-//     * Display the specified resource.
-//     */
-//    public function show(Company $company)
-//    {
-//        return view("admin.company.show", compact("company"));
-//    }
+    /**
+     * Display the specified resource.
+     */
+    public function show(Company $company)
+    {
+        return view("admin.company.show", compact("company"));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -62,7 +62,7 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         $cities = City::all()->pluck("name", "id");
-        $districts = $company->city_id ? District::where("city_id", $company->city_id)->pluck("name", "id") : [];
+        $districts = $company->city_id ? $company->city->districts->pluck("name", "id") : [];
         return view("admin.company.edit", compact("company", "cities", "districts"));
     }
 

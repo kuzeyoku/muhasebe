@@ -22,13 +22,13 @@
         @foreach($licences as $licence)
             <tr>
                 <td>
-                    <img src="{{$licence->getFirstMediaUrl("image")}}" title="{{$licence->number}}" alt="">
+                    @if($licence->hasMedia("image"))
+                        <img src="{{$licence->getFirstMediaUrl("image")}}" title="{{$licence->number}}" alt=""
+                             width="100">
+                    @endif
                 </td>
                 <td>
                     {{$licence->company->name}}
-                </td>
-                <td>
-                    {{$licence->number}}
                 </td>
                 <td>
                     {{$licence->city->name}}
@@ -37,10 +37,13 @@
                     {{$licence->district->name}}
                 </td>
                 <td>
+                    {{$licence->number}}
+                </td>
+                <td>
                     {{$licence->group}}
                 </td>
                 <td>
-                    {{$licence->status}}
+                    {{$licence->type}}
                 </td>
                 <td class="text-end">
                     <button type="button" data-url="{{route("admin.licence.edit", $licence)}}"
@@ -115,6 +118,9 @@
                 } else {
                     return false;
                 }
+            });
+            $(document).on("click", ".image-delete-button", function () {
+                $(this).closest("#image").html('<span>Resmi Kaldırmak İçin Kaydedin</span><input type="hidden" name="delete_image" value="1">');
             });
         });
     </script>

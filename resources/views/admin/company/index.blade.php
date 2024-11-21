@@ -20,7 +20,9 @@
         @foreach($companies as $company)
             <tr>
                 <td>
-                    <img src="{{$company->getFirstMediaUrl("logo")}}" title="{{$company->name}}">
+                    @if($company->hasMedia("image"))
+                        <img src="{{$company->getFirstMediaUrl("image")}}" title="{{$company->name}}" width="100px">
+                    @endif
                 </td>
                 <td>
                     {{$company->name}}
@@ -107,6 +109,9 @@
                 } else {
                     return false;
                 }
+            });
+            $(document).on("click", ".image-delete-button", function () {
+                $(this).closest("#image").html('<span>Resmi Kaldırmak İçin Kaydedin</span><input type="hidden" name="delete_image" value="1">');
             });
         });
     </script>

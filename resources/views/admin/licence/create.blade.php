@@ -8,7 +8,7 @@
         <div class="modal-body">
             <div class="mb-2">
                 {{html()->label("Resim", "image")->class("form-label")->for("image")}}
-                {{html()->file("image")->class("form-control")->required()}}
+                {{html()->file("image")->class("form-control")}}
             </div>
             <div class=" mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}
@@ -31,27 +31,27 @@
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Erişim Numarası", "access_number")->class("form-label")->for("access_number")}}
-                    {{html()->number("access_number")->class("form-control")->placeholder("Erişim Numarası")->required()}}
+                    {{html()->number("access_number")->class("form-control")->placeholder("Erişim Numarası")}}
                 </div>
             </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Başlangıç Tarihi", "start_date")->class("form-label")->for("start_date")}}
-                    {{html()->date("start_date")->class("form-control")->placeholder("Başlangıç Tarihi")->required()}}
+                    {{html()->date("start_date")->class("form-control")->placeholder("Başlangıç Tarihi")}}
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Bitiş Tarihi", "end_date")->class("form-label")->for("end_date")}}
-                    {{html()->date("end_date")->class("form-control")->placeholder("Bitiş Tarihi")->required()}}
+                    {{html()->date("end_date")->class("form-control")->placeholder("Bitiş Tarihi")}}
                 </div>
             </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Ruhsat Grubu", "group")->class("form-label")->for("group")}}
-                    {{html()->text("group")->class("form-control")->placeholder("Ruhsat Grubu")->required()}}
+                    {{html()->text("group")->class("form-control")->placeholder("Ruhsat Grubu")}}
                 </div>
                 <div class="col-lg-6">
-                    {{html()->label("Ruhsat Durumu", "status")->class("form-label")->for("status")}}
-                    {{html()->text("status")->class("form-control")->placeholder("Ruhsat Durumu")->required()}}
+                    {{html()->label("Ruhsat Tipi", "type")->class("form-label")->for("type")}}
+                    {{html()->select("type",\App\Enums\LicenceTypeEnum::toArray())->class("form-control")->placeholder("Seçiniz")}}
                 </div>
             </div>
             <div class="modal-footer">

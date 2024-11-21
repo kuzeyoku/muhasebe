@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum ExpenseType: string
+enum ExpenseTypeEnum: string
 {
     case Business = 'business';
     case Personal = 'personal';
@@ -17,16 +17,7 @@ enum ExpenseType: string
         ];
     }
 
-    public static function toSelectArray(): array
-    {
-        return [
-            self::Other->value => 'Diğer',
-            self::Business->value => 'İş',
-            self::Personal->value => 'Kişisel',
-        ];
-    }
-
-    public function getValues(): array
+    public static function getValues(): array
     {
         return [
             self::Business->value,

@@ -5,15 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Licence extends Model
+class Licence extends Model implements HasMedia
 {
+
+    use interactsWithMedia;
+
     protected $fillable = [
         "number",
         "access_number",
+        "group",
         "start_date",
         "end_date",
-        "status"
+        "type",
+        "company_id",
+        "city_id",
+        "district_id"
     ];
 
     public function city(): BelongsTo
@@ -33,7 +42,7 @@ class Licence extends Model
 
     public function contract(): HasMany
     {
-        return $this->HasMany(Contract::class);
+        return $this->hasMany(Contract::class);
     }
 
     public function invoices(): HasMany

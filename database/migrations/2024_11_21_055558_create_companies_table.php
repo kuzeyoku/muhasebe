@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('district_id')->nullable();
             $table->text("description")->nullable();
+            $table->string("tax_office")->nullable();
+            $table->bigInteger("tax_number")->nullable();
             $table->timestamps();
         });
     }

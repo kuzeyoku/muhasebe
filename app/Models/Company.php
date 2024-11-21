@@ -22,7 +22,9 @@ class Company extends Model implements HasMedia
         "address",
         "city_id",
         "district_id",
-        "description"
+        "description",
+        "tax_office",
+        "tax_number",
     ];
 
     public function city(): BelongsTo

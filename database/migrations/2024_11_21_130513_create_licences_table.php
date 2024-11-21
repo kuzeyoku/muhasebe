@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('licences', function (Blueprint $table) {
             $table->id();
-            $table->integer('number')->unique();
-            $table->integer("access_number")->nullable();
+            $table->bigInteger('number')->unique();
+            $table->bigInteger("access_number")->nullable();
             $table->string("group")->nullable();
-            $table->string("status")->nullable();
+            $table->enum("type", \App\Enums\LicenceTypeEnum::getValues())->nullable();
             $table->unsignedBigInteger("company_id")->nullable();
             $table->foreign("company_id")->references("id")->on("companies");
             $table->unsignedBigInteger("city_id")->nullable();

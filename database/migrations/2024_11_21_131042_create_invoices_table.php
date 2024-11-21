@@ -12,14 +12,17 @@ return new class extends Migration {
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->integer("number")->unique();
             $table->unsignedBigInteger("company_id")->nullable();
             $table->foreign("company_id")->references("id")->on("companies");
             $table->unsignedBigInteger("licence_id")->nullable();
             $table->foreign("licence_id")->references("id")->on("licences");
-            $table->integer("amount")->nullable();
+            $table->string("type")->nullable();
+            $table->string("number")->unique();
+            $table->bigInteger("amount")->nullable();
             $table->date("date")->nullable();
+            $table->date("due_date")->nullable();
             $table->string("status")->nullable();
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }

@@ -26,6 +26,8 @@ class BaseService
             $item->clearMediaCollection("image");
             $item->addMediaFromRequest("image")->usingFileName(Str::random(8) . "." . request()->file("image")->extension())->toMediaCollection("image");
         }
+        if (request()->has("delete_image"))
+            $item->clearMediaCollection("image");
         return $item;
     }
 

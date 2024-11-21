@@ -17,17 +17,17 @@ class CompanyStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "image" => ["image", "mimes:jpeg,png,jpg,gif,svg"],
-            "name" => ["required", "string"],
-            "authorized" => ["string", "nullable"],
-            "email" => ["email", "nullable"],
-            "phone" => ["string", "nullable"],
-            "city_id" => ["integer", "nullable"],
-            "district_id" => ["integer", "nullable"],
-            "address" => ["string", "nullable"],
-            "tax_office" => ["string", "nullable"],
-            "tax_number" => ["numeric", "nullable"],
-            "description" => ["string", "nullable"],
+            "image" => "image|mimes:jpeg,png,jpg,gif,svg|nullable",
+            "name" => "required|string",
+            "authorized" => "string|nullable",
+            "email" => "email|nullable",
+            "phone" => "string|nullable",
+            "city_id" => "nullable|exists:cities,id",
+            "district_id" => "nullable|exists:districts,id",
+            "address" => "string|nullable",
+            "tax_office" => "string|nullable",
+            "tax_number" => "numeric|nullable",
+            "description" => "string|nullable",
         ];
     }
 }

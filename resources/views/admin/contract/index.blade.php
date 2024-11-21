@@ -10,6 +10,8 @@
         <tr>
             <th>Firma Ünvanı</th>
             <th>Ruhsat Numarası</th>
+            <th>Sözleşme Başlığı</th>
+            <th>Sözleşme Bitiş Tarihi</th>
             <th>Sözleşme Durumu</th>
             <th class="text-end">İşlemler</th>
         </tr>
@@ -24,10 +26,16 @@
                     {{$contract->licence->number}}
                 </td>
                 <td>
+                    {{$contract->title}}
+                </td>
+                <td>
+                    {{$contract->end_date}}
+                </td>
+                <td>
                     {{$contract->status}}
                 </td>
                 <td class="text-end">
-                    <button type="button" data-url="{{route("admin.licence.edit", $contract)}}"
+                    <button type="button" data-url="{{route("admin.contract.edit", $contract)}}"
                             class="btn btn-sm btn-blue edit_button"><i
                             class="las la-pen"></i></button>
                     {{html()->form("DELETE", route("admin.contract.destroy", $contract))->class("d-inline")->open()}}
@@ -77,7 +85,7 @@
                                 html += `<option value="${id}">${name}</option>`;
                             }
                         }
-                        $("#district_select").html(html);
+                        $("#licence_select").html(html);
                     }
                 });
             });
