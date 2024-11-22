@@ -3,17 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Expense;
+use App\Services\ExpenseService;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
+    public function __construct(private readonly ExpenseService $service)
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $expenses = Expense::paginate("10");
+        return view('admin.expense.index', compact('expenses'));
     }
 
     /**
@@ -21,7 +29,8 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::all()->pluck('name', 'id');
+        return view('admin.expense.create', compact("companies"));
     }
 
     /**

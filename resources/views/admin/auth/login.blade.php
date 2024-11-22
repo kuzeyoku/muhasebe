@@ -10,6 +10,7 @@
     <link href="{{ asset("admin/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset("admin/css/icons.min.css") }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset("admin/css/app.min.css") }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset("admin/css/sweetalert2.min.css") }}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -24,16 +25,16 @@
                             <div class="card-body p-0 bg-black auth-header-box rounded-top">
                                 <div class="text-center p-3">
                                     <div class="logo logo-admin">
-                                        <img src="{{ asset("admin/images/logo-sm.png") }}" height="50" alt="logo"
+                                        <img src="{{ asset("admin/images/logo-sm.png") }}" height="100" alt="logo"
                                              class="auth-logo">
                                     </div>
-                                    <h4 class="mt-3 mb-1 fw-semibold text-white fs-18">Yönetim Paneli</h4>
+                                    <h4 class="mt-2 mb-1 fw-semibold text-white fs-18">Yönetim Paneli</h4>
                                     <p class="text-muted fw-medium mb-0">Lütfen Giriş Yapın</p>
                                 </div>
                             </div>
                             <div class="card-body pt-0">
-                                {{html()->form()->class("my-4")->open("admin.auth.login")}}
-                                <div class="form-group">
+                                {{html()->form()->class("my-4")->route("admin.auth.login")->open()}}
+                                <div class="form-group mb-2">
                                     {{html()->label("E-Posta Adresi")->for("email")->class("form-label")}}
                                     {{html()->email("email")->class("form-control")->placeholder("E-Posta Adresi")->required()}}
                                 </div>
@@ -69,5 +70,7 @@
         </div>
     </div>
 </div>
+<script src="{{asset("admin/js/sweetalert2.min.js")}}"></script>
+@include("admin.layouts.alert");
 </body>
 </html>

@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-startbar="dark" data-bs-theme="light">
+<html lang="en" dir="ltr" data-startbar="dark" data-bs-theme="dark">
 <head>
     <meta charset="utf-8"/>
     <title>Yönetim Paneli</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link rel="shortcut icon" href="{{asset("admin/images/favicon.ico")}}">
-
     <link href="{{asset("admin/css/bootstrap.min.css")}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset("admin/css/icons.min.css")}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset("admin/css/app.min.css")}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset("admin/css/sweetalert2.min.css")}}" rel="stylesheet">
-
+    @stack("style")
 </head>
 <body>
 <div class="topbar d-print-none">
@@ -84,13 +83,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route("admin.income.index")}}">
                             <i class="iconoir-hand-cash menu-icon"></i>
                             <span>Gelirler</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route("admin.expense.index")}}">
                             <i class="iconoir-hand-cash menu-icon"></i>
                             <span>Giderler</span>
                         </a>
@@ -162,26 +161,29 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
-    <footer class="footer text-center text-sm-start d-print-none">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-0 rounded-bottom-0">
-                        <div class="card-body">
-                            <p class="text-muted mb-0">
-                                ©
-                                <script></script>
-                                {{env("APP_NAME")}}
-                            </p>
+
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true"></div>
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true"></div>
+        <footer class="footer text-center text-sm-start d-print-none">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-0 rounded-bottom-0">
+                            <div class="card-body">
+                                <p class="text-muted mb-0">
+                                    ©
+                                    {{date("Y")}}
+                                    {{env("APP_NAME")}}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </div>
 <script src="{{asset("admin/libs/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <script src="{{asset("admin/js/jquery-3.7.1.min.js")}}"></script>

@@ -25,15 +25,14 @@ class AuthController extends Controller
         $credentials = $request->only("email", "password");
 
         if (auth()->attempt($credentials)) {
-            return redirect()->route("admin.dashboard");
+            return redirect()->route("admin.dashboard")->with("success", "Hoşgeldiniz " . auth()->user()->name);
         }
-
-        return back()->with("error", __("admin/auth.failed"));
+        return back()->with("error", "Eksik yada hatalı bilgi girdiniz.");
     }
 
     public function logout(): \Illuminate\Http\RedirectResponse
     {
         auth()->logout();
-        return redirect()->route("admin.auth.login")->with("success", __("admin/auth.logout"));
+        return redirect()->route("admin.auth.login")->with("success", "Başarıyla çıkış yaptınız.");
     }
 }
