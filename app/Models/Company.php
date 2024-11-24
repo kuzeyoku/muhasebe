@@ -37,14 +37,14 @@ class Company extends Model implements HasMedia
         return $this->belongsTo(District::class);
     }
 
-    public function getDistrictNameAttribute(): string
+    public function getDistrictNameAttribute()
     {
-        return $this->district()->first()->name;
+        return $this->district()->first()?->name;
     }
 
-    public function getCityNameAttribute(): string
+    public function getCityNameAttribute()
     {
-        return $this->city()->first()->name;
+        return $this->city()->first()?->name;
     }
 
     public function licences(): HasMany

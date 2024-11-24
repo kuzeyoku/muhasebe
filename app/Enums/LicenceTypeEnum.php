@@ -8,7 +8,17 @@ enum LicenceTypeEnum: string
     case DetailSearch = "detail_search";
     case Operation = "operation";
 
-    public static function toArray(): array
+    public static function getLabel($type): string
+    {
+        return match ($type) {
+            self::PreSearch->value => "Ön Arama Dönemi",
+            self::DetailSearch->value => "Detay Arama Dönemi",
+            self::Operation->value => "İşletme Ruhsatı",
+            default => "-",
+        };
+    }
+
+    public static function toSelectArray(): array
     {
         return [
             self::PreSearch->value => "Ön Arama Dönemi",

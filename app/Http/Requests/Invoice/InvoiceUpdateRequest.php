@@ -17,7 +17,6 @@ class InvoiceUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "file" => "nullable|file|multiple|mimes:pdf,doc,docx,jpg,jpeg,png,gif,xls,xlsx",
             'number' => 'required|string',
             'company_id' => 'nullable|exists:companies,id',
             'licence_id' => 'nullable|exists:licences,id',

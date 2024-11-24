@@ -19,13 +19,24 @@ enum StatusEnum: string
         ];
     }
 
+    public static function getLabel($status): string
+    {
+        return match ($status) {
+            self::Active->value => "Aktif",
+            self::Passive->value => "Pasif",
+            self::Draft->value => "Taslak",
+            self::Pending->value => "Beklemede",
+            default => "-",
+        };
+    }
+
     public static function toSelectArray(): array
     {
         return [
-            self::Active->value => __("enums.status.active"),
-            self::Passive->value => __("enums.status.passive"),
-            self::Draft->value => __("enums.status.draft"),
-            self::Pending->value => __("enums.status.pending"),
+            self::Active->value => "Aktif",
+            self::Passive->value => "Pasif",
+            self::Draft->value => "Taslak",
+            self::Pending->value => "Beklemede",
         ];
     }
 }

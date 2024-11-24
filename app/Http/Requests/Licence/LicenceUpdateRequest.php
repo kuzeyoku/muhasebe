@@ -17,7 +17,6 @@ class LicenceUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "image" => "nullable|image|mimes:jpeg,png,jpg,gif,svg",
             "number" => "required|integer",
             "access_number" => "nullable|integer",
             "group" => "nullable|string",

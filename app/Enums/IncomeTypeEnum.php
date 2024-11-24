@@ -17,6 +17,25 @@ enum IncomeTypeEnum: string
         ];
     }
 
+    public static function getLabel($type): string
+    {
+        return match ($type) {
+            self::Business->value => 'İş',
+            self::Personal->value => 'Kişisel',
+            self::Other->value => 'Diğer',
+            default => '-',
+        };
+    }
+
+    public function label(): string
+    {
+        return match ($this) {
+            self::Business => 'İş',
+            self::Personal => 'Kişisel',
+            self::Other => 'Diğer',
+        };
+    }
+
     public static function getValues(): array
     {
         return [

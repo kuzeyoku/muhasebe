@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Invoice extends Model
+class Invoice extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     protected $fillable = [
         'number',
         "type",
@@ -43,5 +47,20 @@ class Invoice extends Model
             "paid" => 'Ödendi',
             "unpaid" => 'Ödenmedi',
         };
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->where("status", "paid");
+    }
+
+    public function scopeUnpaid($query)
+    {
+        return $query->where("status", "unpaid");
+    }
+
+    public function scopeBetweenDueDate($query, $maturity)
+    {
+        return $query->whereBetween("due_date", [now(), now()->addDays($maturity)]);
     }
 }

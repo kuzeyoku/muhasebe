@@ -17,7 +17,6 @@ class ContractStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "file" => "file|multiple|nullable|mimes:jpeg,png,jpg,gif,pdf,doc,docx,xls,xlsx",
             "title" => "required|string",
             "company_id" => "required|exists:companies,id",
             "license_id" => "nullable|exists:licenses,id",

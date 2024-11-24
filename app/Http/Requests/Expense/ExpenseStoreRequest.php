@@ -16,7 +16,13 @@ class ExpenseStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "file" => "nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png,xls,xlsx",
+            "company_id" => "nullable|exists:companies,id",
+            "licence_id" => "nullable|exists:licences,id",
+            "type" => "required",
+            "amount" => "required|numeric",
+            "date" => "required|date",
+            "description" => "nullable|string",
         ];
     }
 }

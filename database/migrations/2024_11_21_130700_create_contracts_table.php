@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->date("start_date")->nullable();
             $table->date("end_date")->nullable();
             $table->text("description")->nullable();
-            $table->string("status")->nullable();
+            $table->enum("status", \App\Enums\StatusEnum::getValues())->default(\App\Enums\StatusEnum::Draft);
             $table->timestamps();
         });
     }

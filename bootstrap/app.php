@@ -11,11 +11,6 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->validateCsrfTokens(except: [
-            "admin/getCompanies",
-            "admin/getLicences",
-            "admin/upload",
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

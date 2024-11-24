@@ -31,8 +31,15 @@ class BaseService
         return $item;
     }
 
+    public function fileUpload(array $request, Model $model): void
+    {
+        foreach ($request["files"] as $file) {
+            $model->addMedia($file)->usingFileName(Str::random(8) . "." . $file->extension())->toMediaCollection("files");
+        }
+    }
 
-    public function delete(Model $model): bool
+    public
+    function delete(Model $model): bool
     {
         return $model->delete();
     }
