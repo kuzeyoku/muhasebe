@@ -12,11 +12,11 @@
             </div>
             <div class="mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}
-                {{html()->select("company_id",$companies ?? [],$income->company_id)->class("form-control")->id("company-select")->placeholder("Firma Seçiniz")}}
+                {{html()->select("company_id",$companies,$income->company_id)->class("form-control")->id("company-select")->placeholder("Firma Seçiniz")}}
             </div>
             <div class="mb-2">
                 {{html()->label("Ruhsat (Önce Firma Seçin)", "licence")->class("form-label")->for("licence")}}
-                {{html()->select("licence_id",$licences ?? [],$income->licence_id)->class("form-control")->id("company-select")->placeholder("Firma Seçiniz")}}
+                {{html()->select("licence_id",$licences,$income->licence_id)->class("form-control")->id("company-select")->placeholder("Firma Seçiniz")}}
             </div>
             <div class="mb-2">
                 {{html()->label("Gelir Tipi", "type")->class("form-label")->for("type")}}

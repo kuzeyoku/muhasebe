@@ -87,7 +87,7 @@ class IncomeController extends Controller
     public function edit(Income $income)
     {
         $companies = Company::all()->pluck('name', 'id');
-        $licences = $income->company->licences->pluck('name', 'id');
+        $licences = $income->company?->licences->pluck('name', 'id') ?: [];
         return view('income.edit', compact('income', 'companies', "licences"));
     }
 

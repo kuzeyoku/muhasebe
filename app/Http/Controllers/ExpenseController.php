@@ -63,7 +63,7 @@ class ExpenseController extends Controller
     public function edit(Expense $expense)
     {
         $companies = Company::all()->pluck('name', 'id');
-        $licences = $expense->company->licences->pluck('name', 'id');
+        $licences = $expense->company?->licences->pluck('name', 'id') ?: [];
         return view('expense.edit', compact('expense', 'companies', "licences"));
     }
 
