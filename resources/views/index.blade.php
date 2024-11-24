@@ -1,6 +1,45 @@
 @extends("layouts.main")
-@section("title", "Dashboard")
+@section("title", "Ana Sayfa")
 @section("content")
+    @if($upcoming_payable_invoices->isNotEmpty())
+        <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
+            <div
+                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
+                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Ödemeniz Gereken Faturaların Bulunmaktadır. Lütfen
+            Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
+                    class="las la-link"></i> Faturalar</a>
+        </div>
+    @else
+        <div class="alert alert-success shadow-sm border-theme-white-2" role="alert">
+            <div
+                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
+                <i class="fas fa-check align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Tebrikler!</strong> Ödenmesi Gereken Faturanız Bulunmuyor.
+        </div>
+    @endif
+    @if($upcoming_receivable_invoices->isNotEmpty())
+        <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
+            <div
+                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
+                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Tahsil Edilmesi Gereken Faturalarınız Bulunmaktadır.
+            Lütfen
+            Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
+                    class="las la-link"></i> Faturalar</a>
+        </div>
+    @else
+        <div class="alert alert-success shadow-sm border-theme-white-2" role="alert">
+            <div
+                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
+                <i class="fas fa-check align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Tebrikler!</strong> Ödeme Almanız Gereken Faturanız Bulunmuyor.
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-4">
             <div class="card bg-corner-img">
@@ -122,7 +161,8 @@
                 @foreach(\App\Enums\IncomeTypeEnum::cases() as $type)
                     <tr>
                         <td>{{$type->label()}}</td>
-                        <td>{{$incomes->where("type", $type->value)->sum("amount")}} <i class="las la-lira-sign"></i>
+                        <td>{{$incomes->where("type", $type->value)->sum("amount")}} <i
+                                class="las la-lira-sign"></i>
                         </td>
                     </tr>
                 @endforeach
@@ -138,7 +178,8 @@
                 @foreach(\App\Enums\ExpenseTypeEnum::cases() as $type)
                     <tr>
                         <td>{{$type->label()}}</td>
-                        <td>{{$expenses->where("type", $type->value)->sum("amount")}} <i class="las la-lira-sign"></i>
+                        <td>{{$expenses->where("type", $type->value)->sum("amount")}} <i
+                                class="las la-lira-sign"></i>
                         </td>
                     </tr>
                 @endforeach

@@ -12,12 +12,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $companies = Company::all();
-        $licences = Licence::all();
-        $invoices = Invoice::all();
-        $incomes = Income::all();
-        $expenses = Expense::all();
-        return view("index", compact("companies", "licences", "invoices", "incomes", "expenses"));
+        $data = [
+            "companies" => Company::all(),
+            "licences" => Licence::all(),
+            "invoices" => Invoice::all(),
+            "incomes" => Income::all(),
+            "expenses" => Expense::all(),
+            "upcoming_payable_invoices" => Invoice::unpaid()->expense()->betweenDueDate(7)->get(),
+            "upcoming_receivable_invoices" => Invoice::unpaid()->income()->betweenDueDate(7)->get(),
+        ];
+        return view("index", $data);
     }
 
     public function cacheClear()

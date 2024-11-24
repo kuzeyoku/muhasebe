@@ -54,6 +54,16 @@ class Invoice extends Model implements HasMedia
         return $query->where("status", "paid");
     }
 
+    public function scopeIncome($query)
+    {
+        return $query->where("type", "income");
+    }
+
+    public function scopeExpense($query)
+    {
+        return $query->where("type", "expense");
+    }
+
     public function scopeUnpaid($query)
     {
         return $query->where("status", "unpaid");

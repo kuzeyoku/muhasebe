@@ -23,10 +23,10 @@
         @foreach($invoices as $invoice)
             <tr class="bg-{{$invoice->type == "income" ? "soft-success":"soft-danger"}}">
                 <td>
-                    {{$invoice->company->name}}
+                    {{$invoice->company?->name}}
                 </td>
                 <td>
-                    {{$invoice->company->phone}}
+                    {{$invoice->company?->phone}}
                 </td>
                 <td>
                     {{$invoice->number}}

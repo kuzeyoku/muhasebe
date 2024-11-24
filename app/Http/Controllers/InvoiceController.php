@@ -61,7 +61,7 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         $companies = Company::all()->pluck('name', 'id');
-        $licences = $invoice->company->licences->pluck('number', 'id');
+        $licences = $invoice->company?->licences->pluck('number', 'id') ?: [];
         return view('invoice.edit', compact('invoice', 'companies', 'licences'));
     }
 
