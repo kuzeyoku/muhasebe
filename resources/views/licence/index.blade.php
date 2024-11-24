@@ -28,13 +28,13 @@
                     @endif
                 </td>
                 <td>
-                    {{$licence->company->name}}
+                    {{$licence->company?->name}}
                 </td>
                 <td>
-                    {{$licence->city->name}}
+                    {{$licence->city?->name}}
                 </td>
                 <td>
-                    {{$licence->district->name}}
+                    {{$licence->district?->name}}
                 </td>
                 <td>
                     {{$licence->number}}
