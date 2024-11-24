@@ -33,6 +33,9 @@ Route::middleware(Login::class)->group(function () {
     Route::post("contract/{contract}/files", [\App\Http\Controllers\ContractController::class, "storeFiles"])->name("contract.fileStore");
     Route::delete("contract/{contract}/files/{media}", [\App\Http\Controllers\ContractController::class, "deleteFile"])->name("contract.fileDelete");
     Route::resource("invoice", \App\Http\Controllers\InvoiceController::class);
+    Route::get("invoice/{invoice}/files", [\App\Http\Controllers\InvoiceController::class, "files"])->name("invoice.files");
+    Route::post("invoice/{invoice}/files", [\App\Http\Controllers\InvoiceController::class, "storeFiles"])->name("invoice.fileStore");
+    Route::delete("invoice/{invoice}/files/{media}", [\App\Http\Controllers\InvoiceController::class, "deleteFile"])->name("invoice.fileDelete");
     Route::resource("income", \App\Http\Controllers\IncomeController::class);
     Route::get("income/{income}/files", [\App\Http\Controllers\IncomeController::class, "files"])->name("income.files");
     Route::post("income/{income}/files", [\App\Http\Controllers\IncomeController::class, "storeFiles"])->name("income.fileStore");

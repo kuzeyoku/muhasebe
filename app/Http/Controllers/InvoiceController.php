@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FileRequest;
 use App\Http\Requests\Invoice\InvoiceStoreRequest;
 use App\Http\Requests\Invoice\InvoiceUpdateRequest;
 use App\Models\Company;
 use App\Models\Invoice;
 use App\Services\InvoiceService;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 
 class InvoiceController extends Controller
@@ -41,7 +43,32 @@ class InvoiceController extends Controller
         try {
             $this->service->create($request->validated());
             return redirect()->back()->with('success', 'Fatura Başarıyla Eklendi.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function files(Invoice $invoice)
+    {
+        return view('invoice.files', compact('invoice'));
+    }
+
+    public function storeFiles(FileRequest $request, Invoice $invoice): string
+    {
+        try {
+            $this->service->fileUpload($request->validated(), $invoice);
+            return redirect()->back()->with('success', 'Dosya Başarıyla Eklendi');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function deleteFile(Invoice $invoice, string $file): RedirectResponse
+    {
+        try {
+            $invoice->media()->findOrFail($file)->delete();
+            return redirect()->back()->with('success', 'Dosya Başarıyla Silindi');
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
@@ -73,7 +100,7 @@ class InvoiceController extends Controller
         try {
             $this->service->update($request->validated(), $invoice);
             return redirect()->back()->with('success', 'Fatura Başarıyla Güncellendi.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
@@ -86,7 +113,7 @@ class InvoiceController extends Controller
         try {
             $this->service->delete($invoice);
             return redirect()->back()->with('success', 'Fatura Başarıyla Silindi.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }

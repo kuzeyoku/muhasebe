@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("content")
-    {{html()->form()->route("income.fileStore", $income)->acceptsFiles()->open()}}
+    {{html()->form()->route("invoice.fileStore", $invoice)->acceptsFiles()->open()}}
     <div class="mb-2">
         {{html()->file("files[]")->class("form-control")->multiple()->required()}}
         @if($errors)
@@ -9,9 +9,9 @@
     </div>
     {{html()->submit("Yükle")->class("btn btn-blue")}}
     {{html()->form()->close()}}
-    @if($income->hasMedia("files"))
+    @if($invoice->hasMedia("files"))
         <div class="row mt-3">
-            @foreach($income->getMedia("files") as $file)
+            @foreach($invoice->getMedia("files") as $file)
                 <div class="col-lg-3">
                     <div class="card">
                         <div class="card-header">
@@ -25,7 +25,7 @@
                             </button>
                             <a href="{{$file->getFullUrl()}}" class="btn btn-sm btn-secondary"><i
                                         class="las la-download"></i> İndir</a>
-                            {{html()->form("DELETE")->route("income.fileDelete", [$income,$file])->class("d-inline")->open()}}
+                            {{html()->form("DELETE")->route("invoice.fileDelete", [$invoice,$file])->class("d-inline")->open()}}
                             <button class="btn btn-sm btn-danger delete-button" type="button"><i
                                         class="las la-times"></i></button>
                             {{html()->form()->close()}}

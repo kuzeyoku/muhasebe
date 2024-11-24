@@ -25,7 +25,7 @@
                             </button>
                             <a href="{{$file->getFullUrl()}}" class="btn btn-sm btn-secondary"><i
                                         class="las la-download"></i> İndir</a>
-                            {{html()->form("DELETE")->route("licence.fileDelete", [$expense,$file])->class("d-inline")->open()}}
+                            {{html()->form("DELETE")->route("expense.fileDelete", [$expense,$file])->class("d-inline")->open()}}
                             <button class="btn btn-sm btn-danger delete-button" type="button"><i
                                         class="las la-times"></i></button>
                             {{html()->form()->close()}}
