@@ -20,7 +20,7 @@
             </div>
             <div class="mb-2">
                 {{html()->label("Gelir Tipi", "type")->class("form-label")->for("type")}}
-                {{html()->select("type",\App\Enums\IncomeTypeEnum::toArray(),$expense->type)->class("form-control")->placeholder("Gelir Tipi")->required()}}
+                {{html()->select("type",\App\Enums\IncomeTypeEnum::toArray(),$income->type)->class("form-control")->placeholder("Gelir Tipi")->required()}}
             </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
