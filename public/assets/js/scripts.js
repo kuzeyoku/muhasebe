@@ -15,7 +15,7 @@ $(document).ready(function () {
     $(document).on("change", "#company-select", function () {
         const companyId = $(this).val();
         $.ajax({
-            url: "/admin/getLicences",
+            url: "/getLicences",
             type: "POST",
             data: {
                 company_id: companyId,
@@ -38,7 +38,7 @@ $(document).ready(function () {
     $(document).on("change", "#city-select", function () {
         const cityId = $(this).val();
         $.ajax({
-            url: "/admin/getDistricts",
+            url: "/getDistricts",
             type: "POST",
             data: {
                 city_id: cityId,
