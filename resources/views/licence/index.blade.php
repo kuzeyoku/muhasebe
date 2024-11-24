@@ -52,7 +52,7 @@
                             class="btn btn-sm btn-blue modal-action"><i
                                 class="las la-pen"></i></button>
                     {{html()->form("DELETE", route("licence.destroy", $licence))->class("d-inline")->open()}}
-                    <button type="button" class="btn btn-sm btn-danger"><i class="las la-trash-alt"></i>
+                    <button type="button" class="btn btn-sm btn-danger delete-button"><i class="las la-trash-alt"></i>
                     </button>
                     {{html()->form()->close()}}
                 </td>

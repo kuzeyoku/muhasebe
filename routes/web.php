@@ -42,6 +42,8 @@ Route::middleware(Login::class)->group(function () {
     Route::post("expense/{expense}/files", [\App\Http\Controllers\ExpenseController::class, "storeFiles"])->name("expense.fileStore");
     Route::delete("expense/{expense}/files/{media}", [\App\Http\Controllers\ExpenseController::class, "deleteFile"])->name("expense.fileDelete");
 
+    Route::resource("user", \App\Http\Controllers\UserController::class);
+
     Route::post('getCompanies', [\App\Http\Controllers\DataController::class, 'getCompanies'])->name('getCompanies');
     Route::post("getDistricts", [\App\Http\Controllers\DataController::class, "getDistricts"])->name("getDistricts");
     Route::post('getLicences', [\App\Http\Controllers\DataController::class, 'getLicences'])->name('getLicences');

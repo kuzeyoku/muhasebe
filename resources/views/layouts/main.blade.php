@@ -117,7 +117,12 @@
                             <span>Faturalar</span>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route("user.index")}}">
+                            <i class="iconoir-user menu-icon"></i>
+                            <span>Kullanıcılar</span>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
