@@ -130,10 +130,10 @@
     </div>
 </div>
 <div class="startbar-overlay d-print-none"></div>
-<div class="page-wrapper">
+<div class="page-wrapper pt-3">
     <div class="page-content">
         <div class="container-fluid">
-            <div class="card mt-3">
+            <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <div>

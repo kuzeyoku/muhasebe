@@ -4,7 +4,7 @@ use App\Http\Middleware\Login;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", function () {
-    return view("welcome");
+    return view("dashboard");
 })->name("home");
 
 Route::controller(\App\Http\Controllers\AuthController::class)->name("auth.")->group(function () {
@@ -50,5 +50,4 @@ Route::middleware(Login::class)->group(function () {
     Route::post('getCompanies', [\App\Http\Controllers\DataController::class, 'getCompanies'])->name('getCompanies');
     Route::post("getDistricts", [\App\Http\Controllers\DataController::class, "getDistricts"])->name("getDistricts");
     Route::post('getLicences', [\App\Http\Controllers\DataController::class, 'getLicences'])->name('getLicences');
-
 });
