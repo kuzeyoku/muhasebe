@@ -21,10 +21,10 @@
             @foreach($expenses as $expense)
                 <tr>
                     <td>
-                        {{$expense->company?->name}}
+                        {{$expense->company?->name ?: "-"}}
                     </td>
                     <td>
-                        {{$expense->licence?->number }}
+                        {{$expense->licence?->number ?: "-"}}
                     </td>
                     <td>
                         {{\App\Enums\ExpenseTypeEnum::getLabel($expense->type)}}
