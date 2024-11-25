@@ -21,10 +21,10 @@
             @foreach($incomes as $income)
                 <tr>
                     <td>
-                        {{$income->company?->name}}
+                        {{$income->company?->name ?: "-"}}
                     </td>
                     <td>
-                        {{$income->licence?->number }}
+                        {{$income->licence?->number ?: "-"}}
                     </td>
                     <td>
                         {{\App\Enums\IncomeTypeEnum::getLabel($income->type)}}
@@ -53,8 +53,8 @@
             @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="float-end">
-        {{$incomes->links("pagination::bootstrap-4")}}
+        <div class="float-end">
+            {{$incomes->links("pagination::bootstrap-4")}}
+        </div>
     </div>
 @endsection
