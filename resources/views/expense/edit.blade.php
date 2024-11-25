@@ -25,7 +25,7 @@
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Tutar", "amount")->class("form-label")->for("amount")}}
-                    {{html()->text("amount",$expense->amount)->class("form-control")->placeholder("Tutar")->required()}}
+                    {{html()->number("amount",$expense->amount)->class("form-control")->placeholder("Tutar")->required()}}
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Tarih", "date")->class("form-label")->for("date")}}
@@ -36,7 +36,6 @@
                 {{html()->label("Açıklama")->class("form-label")->for("description")}}
                 {{html()->textarea("description",$expense->description)->class("form-control")->placeholder("Açıklama")}}
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
                 {{html()->submit("Kaydet")->class("btn btn-blue")}}

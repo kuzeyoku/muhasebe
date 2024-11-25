@@ -25,7 +25,7 @@
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Tutar", "amount")->class("form-label")->for("amount")}}
-                    {{html()->text("amount",$income->amount)->class("form-control")->placeholder("Tutar")->required()}}
+                    {{html()->number("amount",$income->amount)->class("form-control")->placeholder("Tutar")->required()}}
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Tarih", "date")->class("form-label")->for("date")}}

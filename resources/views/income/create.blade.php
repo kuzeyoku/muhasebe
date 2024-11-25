@@ -21,12 +21,11 @@
             <div class="mb-2">
                 {{html()->label("Gelir Tipi", "type")->class("form-label")->for("type")}}
                 {{html()->select("type",\App\Enums\IncomeTypeEnum::toArray())->class("form-control")->placeholder("Gelir Tipi")->required()}}
-
             </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Tutar", "amount")->class("form-label")->for("amount")}}
-                    {{html()->text("amount")->class("form-control")->placeholder("Tutar")->required()}}
+                    {{html()->number("amount")->class("form-control")->placeholder("Tutar")->required()}}
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Tarih", "date")->class("form-label")->for("date")}}
@@ -37,7 +36,6 @@
                 {{html()->label("Açıklama")->class("form-label")->for("description")}}
                 {{html()->textarea("description")->class("form-control")->placeholder("Açıklama")}}
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
                 {{html()->submit("Kaydet")->class("btn btn-blue")}}

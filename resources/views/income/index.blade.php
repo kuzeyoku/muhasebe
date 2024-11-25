@@ -35,7 +35,7 @@
                     <td>
                         {{$income->date}}
                     </td>
-                    <td class=" text-end">
+                    <td class="text-end">
                         <a class="btn btn-sm btn-success" href="{{route("income.files",$income)}}">
                             <i class="las la-file"></i>
                         </a>

@@ -48,7 +48,7 @@
                         <strong
                             class="text-{{$invoice->status == "paid" ? "success" : "danger"}}">{{$invoice->statusName}}</strong>
                     </td>
-                    <td class=" text-end">
+                    <td class="text-end">
                         <a class="btn btn-sm btn-success" href="{{route("invoice.files",$invoice)}}">
                             <i class="las la-file"></i>
                         </a>
