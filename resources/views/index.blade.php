@@ -37,7 +37,7 @@
                 class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
                 <i class="fas fa-check align-self-center mb-0 text-white "></i>
             </div>
-            <strong>Tebrikler!</strong> Ödeme Almanız Gereken Faturanız Bulunmuyor.
+            <strong>Tebrikler!</strong> Tahsil Etmeniz Gereken Faturanız Bulunmuyor.
         </div>
     @endif
     <div class="row">
