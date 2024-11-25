@@ -66,10 +66,6 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on("click", ".image-delete-button", function () {
-        $(this).closest("#image").html('<span>Resmi Kaldırmak İçin Kaydedin</span><input type="hidden" name="delete_image" value="1">');
-    });
-
     $(".view-file").on("click", function () {
         let url = $(this).data("url");
         let type = $(this).data("type");

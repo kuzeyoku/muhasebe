@@ -7,10 +7,6 @@
         {{html()->form("PUT")->route("income.update",$income)->acceptsFiles()->open()}}
         <div class="modal-body">
             <div class="mb-2">
-                {{html()->label("Belge", "file")->class("form-label")->for("file")}}
-                {{html()->file("file")->class("form-control")->multiple()}}
-            </div>
-            <div class="mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}
                 {{html()->select("company_id",$companies,$income->company_id)->class("form-control")->id("company-select")->placeholder("Firma Seçiniz")}}
             </div>
