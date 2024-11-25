@@ -30,7 +30,7 @@
                         {{\App\Enums\IncomeTypeEnum::getLabel($income->type)}}
                     </td>
                     <td>
-                        {{$income->amount}}
+                        {{$income->amount}} <i class="las la-lira-sign"></i>
                     </td>
                     <td>
                         {{$income->date}}

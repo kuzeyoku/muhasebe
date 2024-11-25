@@ -30,7 +30,7 @@
                         {{\App\Enums\ExpenseTypeEnum::getLabel($expense->type)}}
                     </td>
                     <td>
-                        {{$expense->amount}}
+                        {{$expense->amount}} <i class="las la-lira-sign"></i>
                     </td>
                     <td>
                         {{$expense->date}}
