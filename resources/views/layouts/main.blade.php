@@ -118,6 +118,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route("debit.index")}}">
+                            <i class="iconoir-credit-card menu-icon"></i>
+                            <span>Borçlar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route("user.index")}}">
                             <i class="iconoir-user menu-icon"></i>
                             <span>Kullanıcılar</span>

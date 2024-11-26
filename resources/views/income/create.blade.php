@@ -4,7 +4,7 @@
             <h5 class="modal-title" id="exampleModalLabel">Gelir Ekle</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
         </div>
-        {{html()->form()->route("income.store")->acceptsFiles()->open()}}
+        {{html()->form()->route("income.store")->open()}}
         <div class="modal-body">
             <div class="mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}

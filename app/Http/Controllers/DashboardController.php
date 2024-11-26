@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Debit;
 use App\Models\Expense;
 use App\Models\Income;
 use App\Models\Invoice;
@@ -20,6 +21,7 @@ class DashboardController extends Controller
             "expenses" => Expense::all(),
             "upcoming_payable_invoices" => Invoice::unpaid()->expense()->betweenDueDate(7)->get(),
             "upcoming_receivable_invoices" => Invoice::unpaid()->income()->betweenDueDate(7)->get(),
+            "debits" => Debit::betweenDueDate(7)->get(),
         ];
         return view("index", $data);
     }
