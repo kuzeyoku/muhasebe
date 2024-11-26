@@ -57,6 +57,7 @@
                 <th>Harcama Tipi</th>
                 <th>Harcama Tutarı</th>
                 <th>Harcama Tarihi</th>
+                <th>Harcama Açıklaması</th>
                 <th class="text-end">İşlemler</th>
             </tr>
             </thead>
@@ -78,16 +79,19 @@
                     <td>
                         {{$expense->date}}
                     </td>
+                    <td>
+                        {{$expense->description}}
+                    </td>
                     <td class="text-end">
                         <a class="btn btn-sm btn-success" href="{{route("expense.files",$expense)}}">
                             <i class="las la-file"></i>
                         </a>
                         <button type="button" data-url="{{route("expense.edit", $expense)}}"
                                 class="btn btn-sm btn-blue modal-action"><i
-                                class="las la-pen"></i></button>
+                                    class="las la-pen"></i></button>
                         {{html()->form("DELETE", route("expense.destroy", $expense))->class("d-inline")->open()}}
                         <button type="button" class="btn btn-sm btn-danger delete-button"><i
-                                class="las la-trash-alt"></i>
+                                    class="las la-trash-alt"></i>
                         </button>
                         {{html()->form()->close()}}
                     </td>

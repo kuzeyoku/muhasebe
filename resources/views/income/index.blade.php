@@ -57,6 +57,7 @@
                 <th>Gelir Tipi</th>
                 <th>Tutar</th>
                 <th>Tarih</th>
+                <th>Açıklama</th>
                 <th class="text-end">İşlemler</th>
             </tr>
             </thead>
@@ -77,6 +78,9 @@
                     </td>
                     <td>
                         {{$income->date}}
+                    </td>
+                    <td>
+                        {{$income->description}}
                     </td>
                     <td class="text-end">
                         <a class="btn btn-sm btn-success" href="{{route("income.files",$income)}}">
