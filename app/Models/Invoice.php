@@ -69,8 +69,8 @@ class Invoice extends Model implements HasMedia
         return $query->where("status", "unpaid");
     }
 
-    public function scopeBetweenDueDate($query, $maturity)
+    public function scopeBetweenDueDate($query, $day)
     {
-        return $query->whereBetween("due_date", [now(), now()->addDays($maturity)]);
+        return $query->whereBetween("due_date", [now(), now()->addDays($day)]);
     }
 }
