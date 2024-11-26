@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FileRequest;
 use App\Http\Requests\Income\IncomeStoreRequest;
 use App\Http\Requests\Income\IncomeUpdateRequest;
+use App\Http\Requests\ReportRequest;
 use App\Models\Company;
 use App\Models\Income;
 use App\Services\IncomeService;
@@ -23,7 +24,19 @@ class IncomeController extends Controller
     public function index()
     {
         $incomes = Income::paginate(10);
-        return view('income.index', compact('incomes'));
+        $companies = Company::all()->pluck('name', 'id');
+        return view('income.index', compact('incomes', 'companies'));
+    }
+
+    public function report(ReportRequest $request)
+    {
+        try {
+            $data = $this->service->report(array_filter($request->validated()));
+            $data["incomes"] = $data["items"];
+            return view('income.index', $data);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', "Rapor Oluşturulurken Bir Hata Oluştu");
+        }
     }
 
     /**

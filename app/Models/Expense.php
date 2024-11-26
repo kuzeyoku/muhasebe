@@ -9,13 +9,13 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * @property mixed $company
+ * @method static paginate(string $string)
  */
 class Expense extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected
-        $fillable = [
+    protected $fillable = [
         'company_id',
         'licence_id',
         'type',
@@ -24,15 +24,22 @@ class Expense extends Model implements HasMedia
         'description',
     ];
 
-    public
-    function company(): BelongsTo
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public
-    function licence(): BelongsTo
+    public function licence(): BelongsTo
     {
         return $this->belongsTo(Licence::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope("reverOrder", function ($builder) {
+            $builder->orderBy("date", "desc");
+        });
     }
 }

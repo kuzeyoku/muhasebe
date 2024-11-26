@@ -5,6 +5,34 @@
     </button>
 @endsection
 @section("content")
+    {{html()->form()->route("expense.report")->id("report-form")->open()}}
+    <div class="row mb-3">
+        <div class="col-md-2">
+            {{html()->label("Firma Ünvanı")->for("company_id")}}
+            {{html()->select("company_id", $companies, request("company_id"))->class("form-control")->placeholder("Firma Ünvanı")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Ruhsat Numarası")->for("licence_id")}}
+            {{html()->select("licence_id", $licences ?? [], request("licence_id"))->class("form-control")->placeholder("Ruhsat Numarası")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Harcama Tipi")->for("type")}}
+            {{html()->select("type", \App\Enums\ExpenseTypeEnum::toArray(), request("type"))->class("form-control")->placeholder("Gider Tipi")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Tarih")->for("date")}}
+            {{html()->date("start_date",request("start_date"))->class("form-control")->placeholder("Tarih")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Tarih")->for("date")}}
+            {{html()->date("end_date", request("end_date"))->class("form-control")->placeholder("Tarih")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Toplam Tutar")->for("total_amount")}}
+            {!! html()->text("total_amount", $total_amount ?? 0)->class("form-control")->placeholder("Toplam Tutar")->required() !!}
+        </div>
+        {{html()->form()->close()}}
+    </div>
     <div class="table-responsive">
         <table class="table table-striped border">
             <thead class="table-light">
@@ -54,7 +82,19 @@
             </tbody>
         </table>
         <div class="float-end">
-            {{$expenses->links("pagination::bootstrap-4")}}
+            @if($expenses instanceof \Illuminate\Pagination\LengthAwarePaginator && $expenses->hasPages())
+                {{$expenses->links("pagination::bootstrap-4")}}
+            @endif
         </div>
     </div>
 @endsection
+@push("script")
+    <script>
+        $(document).ready(function () {
+            $("#report-form").on("change", "input,select", function () {
+                    $("#report-form").submit();
+                }
+            );
+        });
+    </script>
+@endpush

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FileRequest;
+use App\Http\Requests\Invoice\InvoicePdfRequest;
 use App\Http\Requests\Invoice\InvoiceStoreRequest;
 use App\Http\Requests\Invoice\InvoiceUpdateRequest;
 use App\Models\Company;
 use App\Models\Invoice;
 use App\Services\InvoiceService;
 use Exception;
+use http\Env\Request;
 use Illuminate\Http\RedirectResponse;
 
 class InvoiceController extends Controller
@@ -73,6 +75,11 @@ class InvoiceController extends Controller
         }
     }
 
+    public function pdfParser(InvoicePdfRequest $request)
+    {
+        return response()->json($this->service->pdfParser($request->validated()));
+    }
+
     /**
      * Display the specified resource.
      */
@@ -80,7 +87,6 @@ class InvoiceController extends Controller
     {
         //
     }
-
 
     /**
      * Show the form for editing the specified resource.

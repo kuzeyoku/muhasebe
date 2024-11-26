@@ -78,4 +78,53 @@ $(document).ready(function () {
         }
         $("#fileModal").modal("show");
     });
+
+    $("#report-form").on("change", "input,select", function () {
+            $("#report-form").submit();
+        }
+    );
+
+    $(document).on("change", "#invoice_file", function (event) {
+        let fileInput = $(this);
+        let file = fileInput[0].files[0];
+        let url = fileInput.data("url");
+
+        if (file && url) {
+            let form = fileInput.closest("form");
+            let csrfToken = form.find('input[name="_token"]').val();
+
+            let formData = new FormData();
+            formData.append("file", file);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken
+                },
+                success: function (data) {
+                    $('input[name="number"]').val(data.invoice_number);
+                    $('input[name="amount"]').val(data.invoice_amount);
+                    $('input[name="date"]').val(data.invoice_date);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Fatura Bilgileri Alındı",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Fatura Bilgileri Alınamadı",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+        }
+    });
 });

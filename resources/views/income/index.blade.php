@@ -5,6 +5,34 @@
     </button>
 @endsection
 @section("content")
+    {{html()->form()->route("income.report")->id("report-form")->open()}}
+    <div class="row mb-3">
+        <div class="col-md-2">
+            {{html()->label("Firma Ünvanı")->for("company_id")}}
+            {{html()->select("company_id", $companies, request("company_id"))->class("form-control")->placeholder("Firma Ünvanı")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Ruhsat Numarası")->for("licence_id")}}
+            {{html()->select("licence_id", $licences ?? [],request("licence_id"))->class("form-control")->placeholder("Ruhsat Numarası")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Gelir Tipi")->for("type")}}
+            {{html()->select("type", \App\Enums\IncomeTypeEnum::toArray(), request("type"))->class("form-control")->placeholder("Gider Tipi")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Tarih")->for("date")}}
+            {{html()->date("start_date",request("start_date"))->class("form-control")->placeholder("Tarih")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Tarih")->for("date")}}
+            {{html()->date("end_date", request("end_date"))->class("form-control")->placeholder("Tarih")->required()}}
+        </div>
+        <div class="col-md-2">
+            {{html()->label("Toplam Tutar")->for("total_amount")}}
+            {!! html()->text("total_amount", $total_amount ?? 0)->class("form-control")->placeholder("Toplam Tutar")->required() !!}
+        </div>
+        {{html()->form()->close()}}
+    </div>
     <div class="table-responsive">
         <table class="table table-striped border">
             <thead class="table-light">
@@ -41,10 +69,10 @@
                         </a>
                         <button type="button" data-url="{{route("income.edit", $income)}}"
                                 class="btn btn-sm btn-blue modal-action"><i
-                                class="las la-pen"></i></button>
+                                    class="las la-pen"></i></button>
                         {{html()->form("DELETE", route("income.destroy", $income))->class("d-inline")->open()}}
                         <button type="button" class="btn btn-sm btn-danger delete-button"><i
-                                class="las la-trash-alt"></i>
+                                    class="las la-trash-alt"></i>
                         </button>
                         {{html()->form()->close()}}
                     </td>
@@ -54,7 +82,9 @@
             </tbody>
         </table>
         <div class="float-end">
-            {{$incomes->links("pagination::bootstrap-4")}}
+            @if($incomes instanceof \Illuminate\Pagination\LengthAwarePaginator && $incomes->hasPages())
+                {{$incomes->links("pagination::bootstrap-4")}}
+            @endif
         </div>
     </div>
 @endsection

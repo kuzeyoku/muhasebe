@@ -33,4 +33,13 @@ class Income extends Model implements HasMedia
     {
         return $this->belongsTo(Licence::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope("reverOrder", function ($builder) {
+            $builder->orderBy("date", "desc");
+        });
+    }
 }

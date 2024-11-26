@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Expense\ExpenseStoreRequest;
 use App\Http\Requests\Expense\ExpenseUpdateRequest;
 use App\Http\Requests\FileRequest;
+use App\Http\Requests\ReportRequest;
 use App\Models\Company;
 use App\Models\Expense;
 use App\Services\ExpenseService;
@@ -15,7 +16,6 @@ class ExpenseController extends Controller
 {
     public function __construct(private readonly ExpenseService $service)
     {
-
     }
 
     /**
@@ -24,7 +24,19 @@ class ExpenseController extends Controller
     public function index()
     {
         $expenses = Expense::paginate("10");
-        return view('expense.index', compact('expenses'));
+        $companies = Company::all()->pluck('name', 'id');
+        return view('expense.index', compact('expenses', 'companies'));
+    }
+
+    public function report(ReportRequest $request)
+    {
+        try {
+            $data = $this->service->report(array_filter($request->validated()));
+            $data["expenses"] = $data["items"];
+            return view('expense.index', $data);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', "Rapor Oluşturulurken Bir Hata Oluştu");
+        }
     }
 
     /**

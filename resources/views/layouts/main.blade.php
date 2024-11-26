@@ -123,15 +123,14 @@
                             <span>Kullanıcılar</span>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </div>
 </div>
 <div class="startbar-overlay d-print-none"></div>
-<div class="page-wrapper pt-3">
-    <div class="page-content">
+<div class="page-wrapper">
+    <div class="page-content pt-3">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
@@ -176,6 +175,7 @@
 <script src="{{asset("libs/simplebar/simplebar.min.js")}}"></script>
 <script src="{{asset("js/app.js")}}"></script>
 <script src="{{asset("js/scripts.js")}}"></script>
+@stack("script")
 @include("layouts.alert")
 </body>
 </html>

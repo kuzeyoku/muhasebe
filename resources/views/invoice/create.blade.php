@@ -7,6 +7,10 @@
         {{html()->form()->route("invoice.store")->acceptsFiles()->open()}}
         <div class="modal-body">
             <div class="mb-2">
+                {{html()->label("Fatura")->class("form-label")->for("file")}}
+                {{html()->file("file")->class("form-control")->id("invoice_file")->attribute("data-url",route("invoice.pdfParser"))->required()}}
+            </div>
+            <div class="mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}
                 {{html()->select("company_id",$companies)->class("form-control")->id("company-select")->placeholder("Firma Seçiniz")}}
             </div>

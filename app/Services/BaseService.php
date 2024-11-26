@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class BaseService
@@ -38,9 +40,29 @@ class BaseService
         }
     }
 
-    public
-    function delete(Model $model): bool
+    public function delete(Model $model): bool
     {
         return $model->delete();
+    }
+
+    public function report(array $request): array
+    {
+        $query = $this->model->query();
+        $licences = [];
+        if (array_key_exists("company_id", $request)) {
+            $company = Company::findOrFail($request["company_id"]);
+            $licences = $company->licences->pluck('number', 'id');
+            $query->where("company_id", $request["company_id"]);
+        }
+        if (array_key_exists("licence_id", $request))
+            $query->where("licence_id", $request["licence_id"]);
+        if (array_key_exists("start_date", $request) || array_key_exists("end_date", $request))
+            $query->whereBetween("date", [$request["start_date"], $request["end_date"] ?? now()]);
+        if (array_key_exists("type", $request))
+            $query->where("type", $request["type"]);
+        $items = $query->get();
+        $total_amount = $items->sum("amount") . " ₺";
+        $companies = \App\Models\Company::all()->pluck('name', 'id');
+        return compact("items", 'companies', 'licences', 'total_amount');
     }
 }
