@@ -59,7 +59,7 @@
                             <div class="row d-flex justify-content-center">
                                 <div class="col-9">
                                     <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Tahsil Edilecek Tutar</p>
-                                    <h4 class="mt-1 mb-0 fw-medium text-warning">{{$company->invoices()->sum("amount")}}</h4>
+                                    <h4 class="mt-1 mb-0 fw-medium text-warning">{{$company->invoices()->sum("amount")-$company->incomes->sum("amount")}}</h4>
                                 </div>
                                 <div class="col-3 align-self-center">
                                     <div
