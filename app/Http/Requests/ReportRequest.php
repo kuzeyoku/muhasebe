@@ -18,7 +18,7 @@ class ReportRequest extends FormRequest
     {
         return [
             "company_id" => "nullable|exists:companies,id",
-            "licence" => "nullable|exists:licences,id",
+            "licence_id" => "nullable|exists:licences,id",
             "type" => "nullable|string",
             "start_date" => "nullable|date",
             "end_date" => "nullable|date",
