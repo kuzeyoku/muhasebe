@@ -17,6 +17,7 @@ class InvoiceStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "file" => "nullable|file",
             'number' => 'required|string|unique:invoices,number',
             'company_id' => 'nullable|exists:companies,id',
             'licence_id' => 'nullable|exists:licences,id',

@@ -38,8 +38,10 @@ class InvoiceService extends BaseService
         // Implement your logic to extract the invoice amount from the text
         preg_match('/Ödenecek Tutar\s*([\d.,]+)\s*TL/', $text, $matches);
         if (isset($matches[1])) {
-            $matches[1] = str_replace([',', '.'], '', $matches[1]);
-            return (int)$matches[1];
+            // Replace the comma with a dot for decimal point and remove dots for thousands separator
+            $amount = str_replace('.', '', $matches[1]);
+            $amount = str_replace(',', '.', $amount);
+            return (float)$amount;
         }
         return null;
     }

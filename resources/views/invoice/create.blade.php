@@ -8,7 +8,7 @@
         <div class="modal-body">
             <div class="mb-2">
                 {{html()->label("Fatura")->class("form-label")->for("file")}}
-                {{html()->file("file")->class("form-control")->id("invoice_file")->attribute("data-url",route("invoice.pdfParser"))->required()}}
+                {{html()->file("file")->class("form-control")->id("invoice_file")->attribute("data-url",route("invoice.pdfParser"))->accept(".pdf")->required()}}
             </div>
             <div class="mb-2">
                 {{html()->label("Firma", "company")->class("form-label")->for("company")}}

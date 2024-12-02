@@ -17,6 +17,8 @@ class BaseService
         $item = $this->model->create($data);
         if (request()->hasFile("image") && request()->file("image")->isValid())
             $item->addMediaFromRequest("image")->usingFileName(Str::random(8) . "." . request()->file("image")->extension())->toMediaCollection("image");
+        if (request()->hasFile("file") && request()->file("file")->isValid())
+            $item->addMediaFromRequest("file")->usingFileName(Str::random(8) . "." . request()->file("file")->extension())->toMediaCollection("files");
         return $item;
     }
 

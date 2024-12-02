@@ -62,7 +62,6 @@
                         {{html()->form()->close()}}
                     </td>
                 </tr>
-
             @endforeach
             </tbody>
         </table>
