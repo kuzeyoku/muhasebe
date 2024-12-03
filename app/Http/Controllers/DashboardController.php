@@ -19,9 +19,7 @@ class DashboardController extends Controller
             "invoices" => Invoice::all(),
             "incomes" => Income::all(),
             "expenses" => Expense::all(),
-            "upcoming_payable_invoices" => Invoice::unpaid()->expense()->betweenDueDate(7)->get(),
-            "upcoming_receivable_invoices" => Invoice::unpaid()->income()->betweenDueDate(7)->get(),
-            "debits" => Debit::betweenDueDate(7)->get(),
+            "debits" => Debit::all(),
         ];
         return view("index", $data);
     }

@@ -15,6 +15,16 @@
                     gereken <strong>{{$unpaidInvoices->count()}}</strong> adet fatura bulunuyor.
                 </div>
             @endif
+            @if($overdueInvoices->count() > 0)
+                <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
+                    <div
+                        class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
+                        <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
+                    </div>
+                    <strong>Dikkat !</strong> Firma tarafından ödenmesi gereken ve son ödeme tarihi geçmiş
+                    <strong>{{$overdueInvoices->count()}}</strong> adet fatura bulunuyor.
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card bg-corner-img">

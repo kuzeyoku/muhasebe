@@ -53,7 +53,8 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         $unpaidInvoices = $company->invoices()->unpaid()->betweenDueDate(7)->get();
-        return view("company.show", compact("company", "unpaidInvoices"));
+        $overdueInvoices = $company->invoices()->unpaid()->overdue()->get();
+        return view("company.show", compact("company", "unpaidInvoices", "overdueInvoices"));
     }
 
     /**
