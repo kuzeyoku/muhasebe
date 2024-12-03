@@ -1,24 +1,13 @@
 @extends("layouts.main")
 @section("title", "Ana Sayfa")
 @section("content")
-    @if($invoices->unpaid()->expense()->betweenDueDate(7)->isNotEmpty())
+    @if($upcoming_payable_invoices->isNotEmpty())
         <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
             <div
                 class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
                 <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
             </div>
             <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Ödemeniz Gereken Faturaların Bulunmaktadır. Lütfen
-            Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
-                    class="las la-link"></i> Faturalar</a>
-        </div>
-    @elseif($invoices->unpaid()->expense()->overdue()->isNotEmpty())
-        <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
-            <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
-                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
-            </div>
-            <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Ödemeniz Gereken ve Son Ödeme Tarihi Geçmiş Faturalarınız
-            Bulunmaktadır. Lütfen
             Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
                     class="las la-link"></i> Faturalar</a>
         </div>
@@ -31,24 +20,13 @@
             <strong>Tebrikler!</strong> Ödenmesi Gereken Faturanız Bulunmuyor.
         </div>
     @endif
-    @if($invoices->unpaid()->income()->betweenDueDate(7)->isNotEmpty())
+    @if($upcoming_receivable_invoices->isNotEmpty())
         <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
             <div
                 class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
                 <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
             </div>
             <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Tahsil Edilmesi Gereken Faturalarınız Bulunmaktadır.
-            Lütfen
-            Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
-                    class="las la-link"></i> Faturalar</a>
-        </div>
-    @elseif($invoices->unpaid()->income()->overdue()->isNotEmpty())
-        <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
-            <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
-                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
-            </div>
-            <strong>Dikkat</strong> Son Ödeme Tarihi Geçmiş ve Tahsil Edilmesi Gereken Faturalarınız Bulunmaktadır.
             Lütfen
             Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
                     class="las la-link"></i> Faturalar</a>
@@ -62,23 +40,13 @@
             <strong>Tebrikler!</strong> Tahsil Etmeniz Gereken Faturanız Bulunmuyor.
         </div>
     @endif
-    @if($debits->betweenDueDate(7)->isNotEmpty())
+    @if($debits->isNotEmpty())
         <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
             <div
                 class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
                 <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
             </div>
             <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Ödemeniz Gereken Borcunuz Bulunmaktadır.
-            Lütfen Kontrol Ediniz. <a href="{{route("debit.index")}}" class="text-decoration-none"><i
-                    class="las la-link"></i> Borçlar</a>
-        </div>
-    @elseif($debits->overdue()->isNotEmpty())
-        <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
-            <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
-                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
-            </div>
-            <strong>Dikkat</strong> Son Ödeme Tarihi Geçmiş Ödemeniz Gereken Borcunuz Bulunmaktadır.
             Lütfen Kontrol Ediniz. <a href="{{route("debit.index")}}" class="text-decoration-none"><i
                     class="las la-link"></i> Borçlar</a>
         </div>

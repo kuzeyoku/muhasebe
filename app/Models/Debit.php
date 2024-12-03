@@ -15,11 +15,6 @@ class Debit extends Model
     {
         return $query->whereBetween("due_date", [now(), now()->addDays($maturity)]);
     }
-
-    public function scopeOverDue($query)
-    {
-        return $query->where("due_date", "<", now());
-    }
 }
 
 
