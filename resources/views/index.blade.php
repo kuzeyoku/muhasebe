@@ -4,17 +4,27 @@
     @if($upcoming_payable_invoices->isNotEmpty())
         <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
             <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
                 <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
             </div>
             <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Ödemeniz Gereken Faturaların Bulunmaktadır. Lütfen
             Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
-                    class="las la-link"></i> Faturalar</a>
+                        class="las la-link"></i> Faturalar</a>
+        </div>
+    @elseif($overdue_payable_invoices->isNotEmpty())
+        <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
+            <div
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
+                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Dikkat</strong> Son Ödeme Tarihi Geçmiş Ödemeniz Gereken Faturalarınız Bulunmaktadır. Lütfen Kontrol
+            Ediniz. <a
+                    href="{{route("invoice.index")}}" class="text-decoration-none"><i class="las la-link"></i> Faturalar</a>
         </div>
     @else
         <div class="alert alert-success shadow-sm border-theme-white-2" role="alert">
             <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
                 <i class="fas fa-check align-self-center mb-0 text-white "></i>
             </div>
             <strong>Tebrikler!</strong> Ödenmesi Gereken Faturanız Bulunmuyor.
@@ -23,37 +33,58 @@
     @if($upcoming_receivable_invoices->isNotEmpty())
         <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
             <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
                 <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
             </div>
             <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Tahsil Edilmesi Gereken Faturalarınız Bulunmaktadır.
             Lütfen
             Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
-                    class="las la-link"></i> Faturalar</a>
+                        class="las la-link"></i> Faturalar</a>
+        </div>
+    @elseif($overdue_receivable_invoices->isNotEmpty())
+        <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
+            <div
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
+                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Dikkat</strong> Son Ödeme Tarihi Geçmiş Tahsil Edilmesi Gereken Faturalarınız Bulunmaktadır.
+            Lütfen
+            Kontrol Ediniz. <a href="{{route("invoice.index")}}" class="text-decoration-none"><i
+                        class="las la-link"></i> Faturalar</a>
         </div>
     @else
         <div class="alert alert-success shadow-sm border-theme-white-2" role="alert">
             <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
                 <i class="fas fa-check align-self-center mb-0 text-white "></i>
             </div>
             <strong>Tebrikler!</strong> Tahsil Etmeniz Gereken Faturanız Bulunmuyor.
         </div>
     @endif
-    @if($debits->isNotEmpty())
+    @if($upcoming_debits->isNotEmpty())
         <div class="alert alert-warning shadow-sm border-theme-white-2" role="alert">
             <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-warning rounded-circle mx-auto me-1">
                 <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
             </div>
             <strong>Dikkat</strong> Son Ödeme Tarihi Yaklaşmış Ödemeniz Gereken Borcunuz Bulunmaktadır.
             Lütfen Kontrol Ediniz. <a href="{{route("debit.index")}}" class="text-decoration-none"><i
-                    class="las la-link"></i> Borçlar</a>
+                        class="las la-link"></i> Borçlar</a>
+        </div>
+    @elseif($overdue_debits->isNotEmpty())
+        <div class="alert alert-danger shadow-sm border-theme-white-2" role="alert">
+            <div
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-danger rounded-circle mx-auto me-1">
+                <i class="fas fa-exclamation align-self-center mb-0 text-white "></i>
+            </div>
+            <strong>Dikkat</strong> Son Ödeme Tarihi Geçmiş Ödemeniz Gereken Borcunuz Bulunmaktadır. Lütfen Kontrol
+            Ediniz. <a href="{{route("debit.index")}}" class="text-decoration-none"><i
+                        class="las la-link"></i> Borçlar</a>
         </div>
     @else
         <div class="alert alert-success shadow-sm border-theme-white-2" role="alert">
             <div
-                class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
+                    class="d-inline-flex justify-content-center align-items-center thumb-xs bg-success rounded-circle mx-auto me-1">
                 <i class="fas fa-check align-self-center mb-0 text-white "></i>
             </div>
             <strong>Tebrikler!</strong> Ödenmesi Gereken Borcunuz Bulunmuyor.
@@ -66,11 +97,10 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Toplam Şirket</p>
-                            <h4 class="mt-1 mb-0 fw-medium">{{$companies->count()}}</h4>
+                            <h4 class="mt-1 mb-0 fw-medium">{{$companies_count}}</h4>
                         </div>
                         <div class="col-3 align-self-center">
-                            <div
-                                class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
+                            <div class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
                                 <i class="iconoir-building fs-22 align-self-center mb-0 text-primary"></i>
                             </div>
                         </div>
@@ -84,11 +114,10 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Toplam Ruhsat</p>
-                            <h4 class="mt-1 mb-0 fw-medium">{{$licences->count()}}</h4>
+                            <h4 class="mt-1 mb-0 fw-medium">{{$licences_count}}</h4>
                         </div>
                         <div class="col-3 align-self-center">
-                            <div
-                                class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
+                            <div class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
                                 <i class="iconoir-page fs-22 align-self-center mb-0 text-primary"></i>
                             </div>
                         </div>
@@ -102,11 +131,10 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Toplam Kesilen Fatura</p>
-                            <h4 class="mt-1 mb-0 fw-medium">{{$invoices->count()}}</h4>
+                            <h4 class="mt-1 mb-0 fw-medium">{{$invoices_count}}</h4>
                         </div>
                         <div class="col-3 align-self-center">
-                            <div
-                                class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
+                            <div class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
                                 <i class="iconoir-cash fs-22 align-self-center mb-0 text-primary"></i>
                             </div>
                         </div>
@@ -120,11 +148,10 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Toplam Fatura Tutarı</p>
-                            <h4 class="mt-1 mb-0 fw-medium">{{$invoices->sum("amount")}}</h4>
+                            <h4 class="mt-1 mb-0 fw-medium">{{$invoices_sum}}</h4>
                         </div>
                         <div class="col-3 align-self-center">
-                            <div
-                                class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
+                            <div class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
                                 <i class="las la-lira-sign fs-22 align-self-center mb-0 text-primary"></i>
                             </div>
                         </div>
@@ -138,11 +165,10 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Toplam Gelir</p>
-                            <h4 class="mt-1 mb-0 fw-medium">{{$incomes->sum("amount")}}</h4>
+                            <h4 class="mt-1 mb-0 fw-medium">{{$incomes_sum}}</h4>
                         </div>
                         <div class="col-3 align-self-center">
-                            <div
-                                class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
+                            <div class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
                                 <i class="las la-lira-sign fs-22 align-self-center mb-0 text-primary"></i>
                             </div>
                         </div>
@@ -156,11 +182,10 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <p class="text-muted text-uppercase mb-0 fw-normal fs-13">Toplam Gider</p>
-                            <h4 class="mt-1 mb-0 fw-medium">{{$expenses->sum("amount")}}</h4>
+                            <h4 class="mt-1 mb-0 fw-medium">{{$expenses_sum}}</h4>
                         </div>
                         <div class="col-3 align-self-center">
-                            <div
-                                class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
+                            <div class="d-flex justify-content-center align-items-center thumb-md border-dashed border-primary rounded mx-auto">
                                 <i class="las la-lira-sign fs-22 align-self-center mb-0 text-primary"></i>
                             </div>
                         </div>
@@ -181,7 +206,7 @@
                     <tr>
                         <td>{{$type->label()}}</td>
                         <td>{{$incomes->where("type", $type->value)->sum("amount")}} <i
-                                class="las la-lira-sign"></i>
+                                    class="las la-lira-sign"></i>
                         </td>
                     </tr>
                 @endforeach
@@ -198,7 +223,7 @@
                     <tr>
                         <td>{{$type->label()}}</td>
                         <td>{{$expenses->where("type", $type->value)->sum("amount")}} <i
-                                class="las la-lira-sign"></i>
+                                    class="las la-lira-sign"></i>
                         </td>
                     </tr>
                 @endforeach

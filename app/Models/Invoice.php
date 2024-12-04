@@ -73,4 +73,9 @@ class Invoice extends Model implements HasMedia
     {
         return $query->whereBetween("due_date", [now(), now()->addDays($day)]);
     }
+
+    public function scopeOverDue($query)
+    {
+        return $query->where("due_date", "<", now());
+    }
 }
