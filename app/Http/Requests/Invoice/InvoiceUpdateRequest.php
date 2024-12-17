@@ -28,4 +28,20 @@ class InvoiceUpdateRequest extends FormRequest
             "description" => "nullable|string",
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            "file" => "Fatura Dosyası",
+            'number' => 'Fatura Numarası',
+            'company_id' => 'Firma',
+            'licence_id' => 'Ruhsat',
+            "type" => "Fatura Türü",
+            "amount" => "Fatura Tutarı",
+            "date" => "Fatura Tarihi",
+            "due_date" => "Son Ödeme Tarihi",
+            "status" => "Durum",
+            "description" => "Açıklama",
+        ];
+    }
 }

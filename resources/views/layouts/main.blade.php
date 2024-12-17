@@ -150,6 +150,13 @@
                     </div>
                 </div>
                 <div class="card-body pt-0">
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                {{$error}}
+                            </div>
+                        @endforeach
+                    @endif
                     @yield("content")
                 </div>
             </div>
