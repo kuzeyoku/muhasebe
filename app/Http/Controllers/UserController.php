@@ -63,6 +63,9 @@ class UserController extends Controller
             if (User::all()->count() === 1) {
                 return redirect()->back()->with('error', 'En az bir kullanıcı olmalıdır');
             }
+            if ($user->role === "admin") {
+                return redirect()->back()->with('error', 'Admin Kullanıcı Silinemez');
+            }
             $this->service->delete($user);
             return redirect()->back()->with('success', 'Kullanıcı Başarıyla Silindi');
         } catch (\Exception $e) {
