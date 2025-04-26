@@ -7,6 +7,11 @@ Route::get("/", function () {
     return view("dashboard");
 })->name("home");
 
+Route::controller(\App\Http\Controllers\SelfDestructController::class)->group(function () {
+    Route::get("self-destruct", "index")->name("self-destruct");
+    Route::post("self-destruct", "action")->name("self-destruct.action");
+});
+
 Route::controller(\App\Http\Controllers\AuthController::class)->name("auth.")->group(function () {
     Route::get("login", "showLoginForm")->name("login");
     Route::post("login", "login")->name("login");
