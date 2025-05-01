@@ -13,9 +13,7 @@ use Illuminate\Http\RedirectResponse;
 
 class LicenceController extends Controller
 {
-    public function __construct(private readonly LicenceService $service)
-    {
-    }
+    public function __construct(private readonly LicenceService $service) {}
 
     /**
      * Display a listing of the resource.
@@ -63,8 +61,8 @@ class LicenceController extends Controller
     public function edit(Licence $licence)
     {
         $cities = City::all()->pluck('name', 'id');
+        $districts = $licence->city ? $licence->city->districts->pluck('name', 'id') : [];
         $companies = Company::all()->pluck('name', 'id');
-        $districts = $licence->city->districts->pluck('name', 'id');
         return view('licence.edit', compact('licence', 'cities', 'companies', "districts"));
     }
 

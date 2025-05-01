@@ -59,7 +59,7 @@ $(document).ready(function () {
     });
 
     $(".delete-button").click(function () {
-        if (confirm("Silmek istediğinize emin misiniz?")) {
+        if (confirm("İlişkili verilerde silinecektir. Silmek istediğinize emin misiniz?")) {
             $(this).closest("form").submit();
         } else {
             return false;
