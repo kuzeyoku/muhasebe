@@ -23,7 +23,7 @@
             <div class="row mb-2">
                 <div class="col-lg-6">
                     {{html()->label("Ruhsat Numarası", "number")->class("form-label")->for("number")}}
-                    {{html()->number("number",$licence->number)->class("form-control")->placeholder("Ruhsat Numarası")->required()}}
+                    {{html()->text("number",$licence->number)->class("form-control")->placeholder("Ruhsat Numarası")->required()}}
                 </div>
                 <div class="col-lg-6">
                     {{html()->label("Erişim Numarası", "access_number")->class("form-label")->for("access_number")}}

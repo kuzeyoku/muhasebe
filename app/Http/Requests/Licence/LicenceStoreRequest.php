@@ -17,7 +17,7 @@ class LicenceStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "number" => "required|integer|unique:licences,number",
+            "number" => "required|string|unique:licences,number",
             "access_number" => "nullable|integer",
             "group" => "nullable|string",
             "type" => "nullable|string",

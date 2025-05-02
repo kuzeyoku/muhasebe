@@ -17,7 +17,7 @@ class LicenceUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "number" => "required|integer",
+            "number" => "required|string",
             "access_number" => "nullable|integer",
             "group" => "nullable|string",
             "type" => "nullable|string",
