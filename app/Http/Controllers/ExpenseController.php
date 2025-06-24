@@ -124,7 +124,7 @@ class ExpenseController extends Controller
     {
         try {
             $this->service->delete($expense);
-            return redirect()->back()->with('success', 'Gider Kaydı Başarıyla Silindi');
+            return redirect()->route("expense.index")->with('success', 'Gider Kaydı Başarıyla Silindi');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

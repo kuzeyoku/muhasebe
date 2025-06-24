@@ -125,7 +125,7 @@ class IncomeController extends Controller
     {
         try {
             $this->service->delete($income);
-            return redirect()->back()->with('success', 'Gelir Kaydı Başarıyla Silindi');
+            return redirect()->route("income.index")->with('success', 'Gelir Kaydı Başarıyla Silindi');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
