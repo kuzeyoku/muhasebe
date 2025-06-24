@@ -127,4 +127,35 @@ $(document).ready(function () {
             });
         }
     });
+
+    $("#exportExcel").on("click", function () {
+        const table = document.querySelector("table");
+
+        // 1. Thead'den başlıkları ve index'lerini al, exclude'ları ayıkla
+        const ths = Array.from(table.querySelectorAll("thead th"));
+        const includedIndexes = ths
+            .map((th, index) => th.classList.contains("exclude") ? null : index)
+            .filter(index => index !== null);
+
+        const headers = includedIndexes.map(index => ths[index].innerText.trim());
+
+        // 2. tbody içinden sadece görünen satırları al
+        const rows = Array.from(table.querySelectorAll("tbody tr")).filter(tr => {
+            return window.getComputedStyle(tr).display !== "none";
+        });
+
+        // 3. Veriyi topla
+        const data = [headers];
+        rows.forEach(row => {
+            const cells = Array.from(row.querySelectorAll("td"));
+            const rowData = includedIndexes.map(i => cells[i]?.innerText.trim());
+            data.push(rowData);
+        });
+
+        // 4. Excel dosyasını oluştur
+        const worksheet = XLSX.utils.aoa_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Veriler");
+        XLSX.writeFile(workbook, "export.xlsx");
+    });
 });

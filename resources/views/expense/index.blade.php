@@ -3,6 +3,7 @@
 @section("button")
     <button data-url="{{route("expense.create")}}" class="btn btn-sm btn-blue modal-action">Gider Ekle
     </button>
+    <button id="exportExcel" class="btn btn-sm btn-success">Excel'e Aktar</button>
 @endsection
 @section("content")
     <div class="accordion mb-2" id="accordionExample">
@@ -58,7 +59,7 @@
                 <th>Harcama Tutarı</th>
                 <th>Harcama Tarihi</th>
                 <th>Harcama Açıklaması</th>
-                <th class="text-end">İşlemler</th>
+                <th class="text-end exclude">İşlemler</th>
             </tr>
             </thead>
             <tbody>
@@ -88,10 +89,10 @@
                         </a>
                         <button type="button" data-url="{{route("expense.edit", $expense)}}"
                                 class="btn btn-sm btn-blue modal-action"><i
-                                    class="las la-pen"></i></button>
+                                class="las la-pen"></i></button>
                         {{html()->form("DELETE", route("expense.destroy", $expense))->class("d-inline")->open()}}
                         <button type="button" class="btn btn-sm btn-danger delete-button"><i
-                                    class="las la-trash-alt"></i>
+                                class="las la-trash-alt"></i>
                         </button>
                         {{html()->form()->close()}}
                     </td>
@@ -108,12 +109,5 @@
     </div>
 @endsection
 @push("script")
-    <script>
-        $(document).ready(function () {
-            $("#report-form").on("change", "input,select", function () {
-                    $("#report-form").submit();
-                }
-            );
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 @endpush

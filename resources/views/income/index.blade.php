@@ -3,6 +3,7 @@
 @section("button")
     <button data-url="{{route("income.create")}}" class="btn btn-sm btn-blue modal-action">Gelir Ekle
     </button>
+    <button id="exportExcel" class="btn btn-sm btn-success">Excel'e Aktar</button>
 @endsection
 @section("content")
     <div class="accordion mb-2" id="accordionExample">
@@ -58,7 +59,7 @@
                 <th>Tutar</th>
                 <th>Tarih</th>
                 <th>Açıklama</th>
-                <th class="text-end">İşlemler</th>
+                <th class="text-end exclude">İşlemler</th>
             </tr>
             </thead>
             <tbody>
@@ -107,3 +108,6 @@
         </div>
     </div>
 @endsection
+@push("script")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+@endpush
